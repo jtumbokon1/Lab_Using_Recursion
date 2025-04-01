@@ -1,4 +1,6 @@
-﻿namespace Lab_Using_Recursion
+﻿using System.Transactions;
+
+namespace Lab_Using_Recursion
 {
     internal class Program
     {
@@ -10,6 +12,11 @@
             Console.WriteLine("Enter number m:");
             double m = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine(Sum(n,m));
+
+            Console.WriteLine("Division");
+            Console.WriteLine("Enter your number:");
+            int num = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine($"Total number of divisions: {DivisibleByTwo(num)}");
         }
 
         public static double Sum(double n, double m)
@@ -24,16 +31,15 @@
             }
         }
 
-        //	One that prints out how many times a number entered by the user can be evenly divided by 2.
         public static int DivisibleByTwo(int n)
         {
-            if (n % 2 == 0)
+            if (n % 2 != 0)
             {
-                return DivisibleByTwo(n / 2);
+                return 0;
             }
             else
             {
-                return n;
+                return 1 + DivisibleByTwo(n / 2);
             }
         }
     }
